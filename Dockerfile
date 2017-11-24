@@ -28,7 +28,7 @@ RUN apk --no-cache --no-progress upgrade && \
     echo '    "ratio-limit-enabled": true,' >>$file && \
     echo '    "rpc-authentication-required": 1,' >>$file && \
     echo '    "rpc-password": "transmission",' >>$file && \
-    echo '    "rpc-port": 9091,' >>$file && \
+    echo '    "rpc-port": 9092,' >>$file && \
     echo '    "rpc-username": "transmission",' >>$file && \
     echo '    "rpc-whitelist": "127.0.0.1",' >>$file && \
     echo '    "upload-limit": 100,' >>$file && \
@@ -38,10 +38,10 @@ RUN apk --no-cache --no-progress upgrade && \
 
 COPY transmission.sh /usr/bin/
 
-EXPOSE 9091 51413/tcp 51413/udp
+EXPOSE 9092 51413/tcp 51413/udp
 
 HEALTHCHECK --interval=60s --timeout=15s \
-            CMD curl -LSs http://localhost:9091/ >/dev/null
+            CMD curl -LSs http://localhost:9092/ >/dev/null
 
 VOLUME ["/var/lib/transmission-daemon"]
 
